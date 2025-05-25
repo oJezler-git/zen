@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zen*</title>
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+  <body data-theme="light">
+    <div class="container">
+      <div class="header">
+        <div class="logo">Zen*</div>
+        <div class="theme-toggle" id="theme-toggle">
+          <div class="theme-toggle-inner">
+            <div class="theme-toggle-circle" id="toggle-circle">☀️</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-section">
+        <h1 class="greeting" id="greeting">Begin with Purpose</h1>
+        <p class="greeting-subtitle" id="greeting-subtitle">
+          We’re guests on Earth—make your stay unforgettable.
+        </p>
+        <div class="date-time" id="datetime"></div>
+      </div>
+
+      <div class="quote-section">
+        <div class="quote" id="quote">""</div>
+        <div class="quote-author" id="quote-author"></div>
+      </div>
+
+      <div class="main-grid">
+        <div class="card">
+          <h2 class="card-title">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z" />
+            </svg>
+            Today's Intentions
+          </h2>
+          <div id="todo-list">
+            <div class="todo-item">
+              <input type="checkbox" class="todo-checkbox" />
+              <span class="todo-text">Review project roadmap</span>
+            </div>
+            <div class="todo-item">
+              <input type="checkbox" class="todo-checkbox" />
+              <span class="todo-text">Morning reflection practice</span>
+            </div>
+            <div class="todo-item">
+              <input type="checkbox" class="todo-checkbox" />
+              <span class="todo-text">Plan tomorrow's priorities</span>
+            </div>
+          </div>
+          <input
+            type="text"
+            class="todo-input"
+            placeholder="What will you accomplish today?"
+            id="todo-input"
+          />
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+            Focus Music
+          </h2>
+          <a
+            href="http://music.ojezler.com/players/focus.html"
+            class="quick-link"
+            target="_blank"
+          >
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="6" />
+              <path d="M12 8v8M8 12h8" />
+            </svg>
+            Open Music Player
+          </a>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">
+            <svg class="icon" viewBox="0 0 24 24">
+              <rect
+                width="18"
+                height="18"
+                x="3"
+                y="3"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                rx="2"
+              />
+              <path d="M12 8v4l3 3" />
+            </svg>
+            Quick Access
+          </h2>
+          <div class="quick-links">
+            <a href="https://gmail.com" class="quick-link" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path d="M20 6L9 13l-5-3.5V7l5 3.5L20 4v2z" />
+                <rect
+                  width="18"
+                  height="14"
+                  x="3"
+                  y="4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  rx="2"
+                />
+              </svg>
+              Mail
+            </a>
+            <a
+              href="https://calendar.google.com"
+              class="quick-link"
+              target="_blank"
+            >
+              <svg class="icon" viewBox="0 0 24 24">
+                <rect
+                  width="18"
+                  height="18"
+                  x="3"
+                  y="4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  rx="2"
+                />
+                <line x1="16" y1="2" x2="16" y2="6" />
+                <line x1="8" y1="2" x2="8" y2="6" />
+              </svg>
+              Calendar
+            </a>
+            <a href="https://github.com" class="quick-link" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+                />
+              </svg>
+              Code
+            </a>
+            <a href="https://notion.so" class="quick-link" target="_blank">
+              <svg class="icon" viewBox="0 0 24 24">
+                <rect
+                  width="18"
+                  height="18"
+                  x="3"
+                  y="3"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  rx="2"
+                />
+                <line x1="9" y1="9" x2="15" y2="9" />
+                <line x1="9" y1="13" x2="15" y2="13" />
+              </svg>
+              Notes
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-section">
+        <div class="card">
+          <h2 class="card-title">
+            <svg class="icon" viewBox="0 0 24 24">
+              <path
+                d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+              />
+            </svg>
+            Today's Journey
+          </h2>
+          <p class="progress-text">
+            Your momentum is building. Each completed intention moves you
+            forward.
+          </p>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 10px;
+            "
+          >
+            <span>Intentions Achieved</span>
+            <span id="task-progress">0/3</span>
+          </div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="progress-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2 class="card-title">
+            <svg class="icon" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+              <line x1="9" y1="9" x2="9.01" y2="9" />
+              <line x1="15" y1="9" x2="15.01" y2="9" />
+            </svg>
+            Focus Mastery
+          </h2>
+          <div class="focus-stats">
+            <div class="focus-time" id="focus-time">0h 0m</div>
+            <div class="focus-subtitle">Deep work achieved</div>
+            <div class="sessions-text">
+              <span id="sessions-count">0</span> focused sessions completed
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Debug controls for time simulation
+      function addDebugControls() {
+        const debugDiv = document.createElement("div");
+        debugDiv.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: var(--bg-card);
+        padding: 15px;
+        border-radius: 10px;
+        border: 1px solid var(--border-color);
+        z-index: 1000;
+    `;
+
+        debugDiv.innerHTML = `
+        <div style="margin-bottom: 10px; color: var(--text-primary);">Debug Time Control</div>
+        <select id="debug-time" style="padding: 5px; margin-right: 10px;">
+            <option value="6">6:00 AM (Morning)</option>
+            <option value="10">10:00 AM (Morning)</option>
+            <option value="14">2:00 PM (Midday)</option>
+            <option value="17">5:00 PM (Evening)</option>
+            <option value="21">9:00 PM (Night)</option>
+        </select>
+        <button id="apply-debug-time" style="padding: 5px 10px;">Apply Time</button>
+    `;
+
+        document.body.appendChild(debugDiv);
+
+        // Override Date functionality for testing
+        let debugDate = new Date();
+        const originalDate = Date;
+
+        document
+          .getElementById("apply-debug-time")
+          .addEventListener("click", () => {
+            const selectedHour = parseInt(
+              document.getElementById("debug-time").value
+            );
+            debugDate = new Date();
+            debugDate.setHours(selectedHour);
+
+            // Override the Date constructor
+            window.Date = class extends originalDate {
+              constructor() {
+                super();
+                return debugDate;
+              }
+            };
+
+            // Update everything that depends on time
+            updateDateTime();
+            setThemeBasedOnTime();
+            setRandomQuote();
+            updateGreeting();
+            updateMotivationalMessage();
+          });
+      }
+
+      // Add debug controls in development
+      if (
+        window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1"
+      ) {
+        document.addEventListener("DOMContentLoaded", addDebugControls);
+      }
+    </script>
+    <script src="scripts/script.js"></script>
+  </body>
+</html>
