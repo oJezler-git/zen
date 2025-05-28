@@ -844,7 +844,7 @@ function getTimeBasedQuotes() {
   const hour = new Date().getHours();
   if (hour < 12) {
     return quotesByTime.morning;
-  } else if (hour < 18) {
+  } else if (hour < 20) {
     return quotesByTime.midday;
   } else {
     return quotesByTime.evening;
@@ -895,7 +895,7 @@ function updateGreeting() {
   let timeOfDay;
   if (hour < 12) {
     timeOfDay = "morning";
-  } else if (hour < 18) {
+  } else if (hour < 20) {
     timeOfDay = "afternoon";
   } else {
     timeOfDay = "evening";
