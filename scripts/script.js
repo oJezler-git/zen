@@ -609,6 +609,6 @@ document.addEventListener("DOMContentLoaded", enhancedInit);
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    console.log("Focus Hub loaded successfully! 🎯");
+    console.log("Zen* loaded successfully! 🎯");
   });
 }
