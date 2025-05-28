@@ -585,6 +585,14 @@ const quotesByTime = {
       text: "Even through your hardest nights, the universe keeps growing. So will you.",
       author: "Anonymous",
     },
+    {
+      text: "The night is darkest just before the dawn. And I promise you, the dawn is coming.",
+      author: "Harvey Dent (The Dark Knight)",
+    },
+    {
+      text: "Even the darkest night will end and the sun will rise.",
+      author: "Victor Hugo",
+    },
   ],
 };
 
@@ -673,6 +681,9 @@ const subtitles = {
     "This moment is part of your legacy.",
     "Stay the course. Greatness is made in the middle.",
     "Midday is a chance to refocus and recharge.",
+    "Let the afternoon be a time of action and achievement.",
+    "Every afternoon is a new opportunity to excel.",
+    "Harness the power of the afternoon sun to fuel your ambitions.",
   ],
   evening: [
     "Reflect on progress, envision tomorrow.",
@@ -723,7 +734,6 @@ let totalFocusTime = 0;
 let completedSessions = 0;
 
 // Theme management
-// Theme management
 function toggleTheme() {
   const body = document.body;
   const circle = document.getElementById("toggle-circle");
@@ -750,6 +760,54 @@ function init() {
     updateDateTime();
     setThemeBasedOnTime();
   }, 60000);
+}
+
+// Storage management functions
+function getStoredItems(key) {
+  const stored = localStorage.getItem(key);
+  return stored ? JSON.parse(stored) : { recent: [], cycleCount: {} };
+}
+
+function updateStoredItems(key, item) {
+  const stored = getStoredItems(key);
+
+  // Add new item to recent list
+  stored.recent.push(item);
+
+  // Initialize or increment cycle count for this item
+  stored.cycleCount[item] = (stored.cycleCount[item] || 0) + 1;
+
+  // Keep only the last 10 items to prevent storage bloat
+  if (stored.recent.length > 10) {
+    const removed = stored.recent.shift();
+    // Decrement cycle count when item falls off recent list
+    if (stored.cycleCount[removed] > 0) {
+      stored.cycleCount[removed]--;
+    }
+  }
+
+  localStorage.setItem(key, JSON.stringify(stored));
+}
+
+function isItemAvailable(key, item) {
+  const stored = getStoredItems(key);
+  // Item is available if it hasn't been shown in the last 10 cycles
+  return !stored.recent.includes(item) || stored.cycleCount[item] < 10;
+}
+
+function getRandomAvailableItem(items, storageKey) {
+  // Filter out recently used items
+  const availableItems = items.filter((item) =>
+    isItemAvailable(storageKey, JSON.stringify(item))
+  );
+
+  // If all items have been used recently, reset the recent list for this category
+  if (availableItems.length === 0) {
+    localStorage.removeItem(storageKey);
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+  return availableItems[Math.floor(Math.random() * availableItems.length)];
 }
 
 function updateDateTime() {
@@ -805,8 +863,10 @@ function setRandomQuote() {
     currentHour.toString() !== lastHour
   ) {
     const timeBasedQuotes = getTimeBasedQuotes();
-    const randomQuote =
-      timeBasedQuotes[Math.floor(Math.random() * timeBasedQuotes.length)];
+    const randomQuote = getRandomAvailableItem(
+      timeBasedQuotes,
+      "displayedQuotes"
+    );
 
     document.getElementById("quote").textContent = `"${randomQuote.text}"`;
     document.getElementById(
@@ -815,7 +875,7 @@ function setRandomQuote() {
 
     localStorage.setItem("lastQuoteTime", currentTime.toString());
     localStorage.setItem("lastQuoteHour", currentHour.toString());
-    localStorage.setItem("currentQuote", JSON.stringify(randomQuote));
+    updateStoredItems("displayedQuotes", JSON.stringify(randomQuote));
   } else {
     const storedQuote = JSON.parse(localStorage.getItem("currentQuote"));
     if (storedQuote) {
@@ -841,13 +901,22 @@ function updateGreeting() {
     timeOfDay = "evening";
   }
 
-  const randomIndex = Math.floor(Math.random() * greetings[timeOfDay].length);
-  const randomSubtitleIndex = Math.floor(
-    Math.random() * subtitles[timeOfDay].length
+  // Get random greeting that hasn't been shown recently
+  const randomGreeting = getRandomAvailableItem(
+    greetings[timeOfDay],
+    "displayedGreetings"
+  );
+  const randomSubtitle = getRandomAvailableItem(
+    subtitles[timeOfDay],
+    "displayedSubtitles"
   );
 
-  greetingEl.textContent = greetings[timeOfDay][randomIndex];
-  subtitleEl.textContent = subtitles[timeOfDay][randomSubtitleIndex];
+  greetingEl.textContent = randomGreeting;
+  subtitleEl.textContent = randomSubtitle;
+
+  // Update storage
+  updateStoredItems("displayedGreetings", randomGreeting);
+  updateStoredItems("displayedSubtitles", randomSubtitle);
 }
 
 function setupEventListeners() {
