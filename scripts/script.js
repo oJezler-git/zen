@@ -747,21 +747,6 @@ function toggleTheme() {
   }
 }
 
-// Initialize the page
-function init() {
-  updateDateTime();
-  setRandomQuote();
-  updateGreeting();
-  setupEventListeners();
-  updateProgress();
-  setThemeBasedOnTime();
-
-  setInterval(() => {
-    updateDateTime();
-    setThemeBasedOnTime();
-  }, 60000);
-}
-
 // Storage management functions
 function getStoredItems(key) {
   const stored = localStorage.getItem(key);
@@ -892,31 +877,47 @@ function updateGreeting() {
   const greetingEl = document.getElementById("greeting");
   const subtitleEl = document.querySelector(".greeting-subtitle");
 
-  let timeOfDay;
-  if (hour < 12) {
-    timeOfDay = "morning";
-  } else if (hour < 20) {
-    timeOfDay = "afternoon";
-  } else {
-    timeOfDay = "evening";
+  // Check if we have stored greetings that are still valid for the current hour
+  const lastGreetingUpdate = localStorage.getItem("lastGreetingUpdate");
+  const lastGreetingHour = localStorage.getItem("lastGreetingHour");
+  const currentHour = new Date().getHours();
+
+  // Only update if it's a new hour or first load
+  if (!lastGreetingUpdate || currentHour.toString() !== lastGreetingHour) {
+    let timeOfDay;
+    if (hour < 12) {
+      timeOfDay = "morning";
+    } else if (hour < 20) {
+      timeOfDay = "afternoon";
+    } else {
+      timeOfDay = "evening";
+    }
+
+    // Get random greeting that hasn't been shown recently
+    const randomGreeting = getRandomAvailableItem(
+      greetings[timeOfDay],
+      "displayedGreetings"
+    );
+    const randomSubtitle = getRandomAvailableItem(
+      subtitles[timeOfDay],
+      "displayedSubtitles"
+    );
+
+    // Store the current selections
+    localStorage.setItem("currentGreeting", randomGreeting);
+    localStorage.setItem("currentSubtitle", randomSubtitle);
+    localStorage.setItem("lastGreetingUpdate", Date.now().toString());
+    localStorage.setItem("lastGreetingHour", currentHour.toString());
+
+    // Update storage of used items
+    updateStoredItems("displayedGreetings", randomGreeting);
+    updateStoredItems("displayedSubtitles", randomSubtitle);
   }
 
-  // Get random greeting that hasn't been shown recently
-  const randomGreeting = getRandomAvailableItem(
-    greetings[timeOfDay],
-    "displayedGreetings"
-  );
-  const randomSubtitle = getRandomAvailableItem(
-    subtitles[timeOfDay],
-    "displayedSubtitles"
-  );
-
-  greetingEl.textContent = randomGreeting;
-  subtitleEl.textContent = randomSubtitle;
-
-  // Update storage
-  updateStoredItems("displayedGreetings", randomGreeting);
-  updateStoredItems("displayedSubtitles", randomSubtitle);
+  // Always display the stored values (they'll be current for this hour)
+  greetingEl.textContent = localStorage.getItem("currentGreeting") || "Hello";
+  subtitleEl.textContent =
+    localStorage.getItem("currentSubtitle") || "Ready to focus?";
 }
 
 function setupEventListeners() {
@@ -1002,10 +1003,23 @@ function updateMotivationalMessage() {
   }
 }
 
-function enhancedInit() {
-  init();
+function init() {
+  updateDateTime();
+  setRandomQuote();
+  updateGreeting();
+  setupEventListeners();
+  updateProgress();
+  setThemeBasedOnTime();
   updateMotivationalMessage();
 
+  // Set up intervals for updates
+  setInterval(() => {
+    updateDateTime();
+    setThemeBasedOnTime();
+    updateGreeting();
+  }, 60000);
+
+  // Mutation observer for todo list changes
   const observer = new MutationObserver(updateMotivationalMessage);
   observer.observe(document.getElementById("todo-list"), {
     childList: true,
@@ -1013,19 +1027,19 @@ function enhancedInit() {
     attributes: true,
   });
 
+  // Card hover effects
   const cards = document.querySelectorAll(".card");
-  cards.forEach((card, index) => {
+  cards.forEach((card) => {
     card.addEventListener("mouseenter", () => {
       card.style.transform = "translateY(-10px) scale(1.02)";
     });
-
     card.addEventListener("mouseleave", () => {
       card.style.transform = "translateY(0) scale(1)";
     });
   });
 }
 
-document.addEventListener("DOMContentLoaded", enhancedInit);
+document.addEventListener("DOMContentLoaded", init);
 
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
