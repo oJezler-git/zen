@@ -685,20 +685,19 @@ const subtitles = {
     "Every afternoon is a new opportunity to excel.",
     "Harness the power of the afternoon sun to fuel your ambitions.",
     "Let focus, not fatigue, define your afternoon.",
-    "Now is the time to double down on your goals.",
     "The afternoon tests your resolve—pass with persistence.",
-    "Keep showing up—your future self will thank you.",
-    "Even small wins count—celebrate them.",
+    "Keep showing up — your future self will thank you.",
+    "Even small wins count — celebrate them.",
     "Keep your eyes on the prize; the day's not over yet.",
-    "Push through the dip—clarity and reward await.",
+    "Push through the dip — clarity and reward await.",
     "Effort now means ease later.",
     "Midday is your momentum checkpoint.",
     "Turn the afternoon slump into a surge of progress.",
     "The best part of your day might still be ahead.",
-    "Keep your standards high—even when energy dips.",
+    "Keep your standards high — even when energy dips.",
     "Master the middle, and you'll conquer the day.",
     "The afternoon is the bridge between intention and achievement.",
-    "Stay mindful—what you do now echoes into the evening.",
+    "Stay mindful — what you do now echoes into the evening.",
   ],
   evening: [
     "Reflect on progress, envision tomorrow.",
@@ -739,14 +738,6 @@ const subtitles = {
     "As the day winds down, let your spirit rise.",
   ],
 };
-
-// State variables
-let timerInterval;
-let timerMinutes = 25;
-let timerSeconds = 0;
-let isTimerRunning = false;
-let totalFocusTime = 0;
-let completedSessions = 0;
 
 // Theme management
 function toggleTheme() {
