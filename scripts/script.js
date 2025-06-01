@@ -191,6 +191,22 @@ const quotesByTime = {
       text: "Let me wake up next to you, have coffee in the morning and wander through the city with your hand in mine, and I'll be happy for the rest of my little life.",
       author: "Charlotte Eriksson",
     },
+    {
+      text: "Don’t be afraid of being alone; remember, when the sun rises, it rises with nobody at its side.",
+      author: "Matshona Dhliwayo",
+    },
+    {
+      text: "You are not fully dressed until you wear a smile.",
+      author: "Evan Esar",
+    },
+    {
+      text: "Each morning we are born again. What we do today is what matters most.",
+      author: "Marcus Aurelius",
+    },
+    {
+      text: "Now that your eyes are open, make the sun jealous with your burning passion to start the day.",
+      author: "Malak El Halabi",
+    },
   ],
   midday: [
     {
@@ -593,6 +609,236 @@ const quotesByTime = {
       text: "Even the darkest night will end and the sun will rise.",
       author: "Victor Hugo",
     },
+    {
+      text: "The moon is a loyal companion. It never leaves. It’s always there, watching, steadfast.",
+      author: "Tahereh Mafi",
+    },
+    {
+      text: "Sometimes, the best bridge between despair and hope is a good night’s sleep.",
+      author: "E. Joseph Cossman",
+    },
+    {
+      text: "The night hides the world, but reveals the universe.",
+      author: "Terri Guillemets",
+    },
+  ],
+  night: [
+    {
+      text: "The night is the hardest time to be alive and 4am knows all my secrets.",
+      author: "Poppy Z. Brite",
+    },
+    {
+      text: "The longest way must have its close – the gloomiest night will wear on to a morning.",
+      author: "Harriet Beecher Stowe",
+    },
+    {
+      text: "The sky grew darker, painted blue on blue, one stroke at a time, into deeper and deeper shades of night.",
+      author: "Haruki Murakami",
+    },
+    {
+      text: "I often think that the night is more alive and more richly coloured than the day.",
+      author: "Vincent Van Gogh",
+    },
+    {
+      text: "Don’t lose hope. You never know what tomorrow will bring.",
+      author: "Anonymous",
+    },
+    {
+      text: "4am is the hour when poets and writers are at their most honest.",
+      author: "Atticus",
+    },
+    {
+      text: "It's 3AM. The world is quiet, but my thoughts are screaming.",
+      author: "Anonymous",
+    },
+    {
+      text: "Those who stay up past midnight know the weight of unsaid things.",
+      author: "Lang Leav",
+    },
+    {
+      text: "There’s something about the stillness at 2am that makes the truth louder.",
+      author: "Beau Taplin",
+    },
+    {
+      text: "Midnight is a lonely place, but sometimes it’s where you find yourself.",
+      author: "Anonymous",
+    },
+    {
+      text: "After midnight, the soul speaks louder than the mind.",
+      author: "Nayyirah Waheed",
+    },
+    {
+      text: "The darker the night, the brighter the stars.",
+      author: "Fyodor Dostoevsky",
+    },
+    {
+      text: "We are all ghosts, haunting ourselves in the quiet hours.",
+      author: "Anonymous",
+    },
+    {
+      text: "Even the darkest night will end and the sun will rise.",
+      author: "Victor Hugo",
+    },
+    {
+      text: "The night hides the world, but reveals the universe.",
+      author: "Terri Guillemets",
+    },
+    {
+      text: "At night, when the noise has ceased, we return to ourselves.",
+      author: "Seneca",
+    },
+    {
+      text: "You are not alone. You are seen. I am with you. You are not alone.",
+      author: "Shonda Rhimes",
+    },
+    {
+      text: "I wonder how many people are awake at 3am, staring at the same moon.",
+      author: "Anonymous",
+    },
+    {
+      text: "Sometimes, the night is kinder than the day.",
+      author: "Anonymous",
+    },
+    {
+      text: "No matter how long the night, morning always comes.",
+      author: "African Proverb",
+    },
+    {
+      text: "In the middle of the night, I ask the stars questions too big for day.",
+      author: "Anonymous",
+    },
+    {
+      text: "There is something in the stillness of the night that speaks louder than words.",
+      author: "C. JoyBell C.",
+    },
+    {
+      text: "The soul that sees beauty may sometimes walk alone in the night.",
+      author: "Johann Wolfgang von Goethe",
+    },
+    {
+      text: "The universe is not in a hurry. You are exactly where you need to be.",
+      author: "Anonymous",
+    },
+    {
+      text: "Do not fear the shadows, they simply mean there is light nearby.",
+      author: "Ruth E. Renkel",
+    },
+    {
+      text: "Midnight is where the day ends, and the truth begins.",
+      author: "Anonymous",
+    },
+    {
+      text: "What is to give light must endure burning.",
+      author: "Viktor E. Frankl",
+    },
+    {
+      text: "I have loved the stars too fondly to be fearful of the night.",
+      author: "Sarah Williams",
+    },
+    {
+      text: "It is not length of life, but depth of life.",
+      author: "Ralph Waldo Emerson",
+    },
+    {
+      text: "He who opens a school door, closes a prison.",
+      author: "Victor Hugo",
+    },
+    {
+      text: "The night is dark and full of terrors, but the fire burns them all away.",
+      author: "George R. R. Martin",
+    },
+    {
+      text: "Man is not worried by real problems so much as by his imagined anxieties about real problems.",
+      author: "Epictetus",
+    },
+    {
+      text: "I will love the light for it shows me the way, yet I will endure the darkness for it shows me the stars.",
+      author: "Og Mandino",
+    },
+    {
+      text: "In the depth of winter, I finally learned that within me there lay an invincible summer.",
+      author: "Albert Camus",
+    },
+    {
+      text: "Hope is being able to see that there is light despite all of the darkness.",
+      author: "Desmond Tutu",
+    },
+    {
+      text: "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment.",
+      author: "Ralph Waldo Emerson",
+    },
+    {
+      text: "Every man has his secret sorrows which the world knows not; and often we call a man cold when he is only sad.",
+      author: "Henry Wadsworth Longfellow",
+    },
+    {
+      text: "You cannot swim for new horizons until you have courage to lose sight of the shore.",
+      author: "William Faulkner",
+    },
+    {
+      text: "However vast the darkness, we must supply our own light.",
+      author: "Stanley Kubrick",
+    },
+    {
+      text: "Life can only be understood backwards; but it must be lived forwards.",
+      author: "Søren Kierkegaard",
+    },
+    {
+      text: "Midnight is not a limit — it’s a beginning.",
+      author: "Anonymous",
+    },
+    {
+      text: "Some nights are made for reflection, not rest.",
+      author: "Anonymous",
+    },
+    {
+      text: "At 2AM, the world goes quiet so you can finally hear your own thoughts.",
+      author: "Anonymous",
+    },
+    {
+      text: "The early hours don’t lie. They know what you truly want.",
+      author: "Beau Taplin",
+    },
+    {
+      text: "When the world sleeps, your mind awakens.",
+      author: "Jezler",
+    },
+    {
+      text: "3AM isn’t late — it’s sacred. It’s where transformation begins.",
+      author: "Anonymous",
+    },
+    {
+      text: "Not all who wander at night are lost — some are finding themselves.",
+      author: "Atticus",
+    },
+    {
+      text: "You don’t have to have it all figured out. Especially not at 2AM.",
+      author: "Anonymous",
+    },
+    {
+      text: "There’s something powerful about making plans in the silence of the night.",
+      author: "Lang Leav",
+    },
+    {
+      text: "You are allowed to dream even when the world is dark.",
+      author: "Tyler Knott Gregson",
+    },
+    {
+      text: "Some nights are for healing. Let the stars hold your pain until morning.",
+      author: "Nikita Gill",
+    },
+    {
+      text: "The stars are watching — keep going.",
+      author: "Anonymous",
+    },
+    {
+      text: "At midnight, even the shadows wait for a reason to stay.",
+      author: "Trista Mateer",
+    },
+    {
+      text: "The darkness doesn't mean you're lost. It just means you're on your way.",
+      author: "Morgan Harper Nichols",
+    },
   ],
 };
 
@@ -610,6 +856,18 @@ const greetings = {
     "Golden Hour Goals",
     "Inspired Awakening",
     "New Light, New Drive",
+    "Awaken with Ambition",
+    "First Light Focus",
+    "Charge the Day",
+    "Rise and Shine Strong",
+    "Ignite Your Drive",
+    "Morning Momentum Surge",
+    "Start Strong, Stay Strong",
+    "Fresh Start Focus",
+    "Embrace the Dawn",
+    "Launch into Action",
+    "Bright Beginnings",
+    "Set the Tone",
   ],
   afternoon: [
     "Midday Focus",
@@ -624,6 +882,18 @@ const greetings = {
     "Midday Motivation",
     "Power Through the Pause",
     "Keep the Vision Alive",
+    "Power Hour Push",
+    "Momentum Maintenance",
+    "Keep the Fire Burning",
+    "Focused Flow",
+    "Afternoon Ascent",
+    "Drive with Determination",
+    "Refuel and Rise",
+    "Steady Strides",
+    "Maintain the Pace",
+    "Climb the Peak",
+    "Push Past the Plateau",
+    "Keep Momentum Moving",
   ],
   evening: [
     "Evening Reflection",
@@ -638,6 +908,39 @@ const greetings = {
     "Rest with Purpose",
     "Gentle Reset",
     "Harvest the Day",
+    "Calm and Collect",
+    "Wind Down with Purpose",
+    "Quiet Strength",
+    "Settle and Strategise",
+    "Nighttime Nurture",
+    "Reflect and Recharge",
+    "Prepare for Tomorrow",
+    "Evening Empowerment",
+    "Close with Confidence",
+    "Serene Success",
+    "Restorative Pause",
+    "Pause, Reflect, Reset",
+  ],
+  night: [
+    "Midnight Resolve",
+    "Quiet Strength",
+    "Dark Hour Drive",
+    "After-Hours Clarity",
+    "Stillness with Purpose",
+    "Night Shift Focus",
+    "Silent Progress",
+    "Moonlit Momentum",
+    "Through the Quiet",
+    "Late Hour Light",
+    "Nocturnal Vision",
+    "Deep Work, Deep Purpose",
+    "Nighttime Nurture",
+    "Wisdom in the Dark",
+    "Overcoming the Night",
+    "Awakening in the Dark",
+    "Darkness to Dawn",
+    "Hidden Strength",
+    "Keep the Fire Alive",
   ],
 };
 
@@ -666,6 +969,7 @@ const subtitles = {
     "The morning is a gift; unwrap it with joy.",
     "Every day is the best day in the year",
     "You got through yesterday, you can get through today.",
+    "The morning is a fresh start; make it count.",
   ],
   afternoon: [
     "Keep moving forward with purpose.",
@@ -736,6 +1040,45 @@ const subtitles = {
     "Let the evening calm your mind and inspire your dreams.",
     "A strong mind needs a strong body, and a strong body needs rest.",
     "As the day winds down, let your spirit rise.",
+  ],
+  night: [
+    "In the stillness, find your strength.",
+    "Let the darkness inspire your dreams.",
+    "The quiet hours hold the loudest truths.",
+    "Even in darkness, there is light to be found.",
+    "The night is a canvas for your dreams.",
+    "The stars remind us that even in darkness, there is beauty.",
+    "Let the night be a time of peace and preparation.",
+    "In the silence of the night, find your clarity.",
+    "The night is a time to gather your thoughts and dreams.",
+    "As the world sleeps, let your mind awaken.",
+    "In the quiet of the night, find your purpose.",
+    "Let the darkness be a source of inspiration.",
+    "The night is a time for dreaming and planning.",
+    "The world holds its breath at midnight.",
+    "Stillness speaks volumes in the quiet of the night.",
+    "In the embrace of the still night, peace finds you.",
+    "Silence is the symphony of nighttime's stillness.",
+    "The calm at midnight cradles restless hearts.",
+    "Let the stillness of the night soothe your weary soul.",
+    "Amidst stillness, the night whispers its secrets.",
+    "When the world sleeps, tranquility reigns supreme.",
+    "In the depths of night, stillness becomes a melody.",
+    "Under the stars, the earth quietly listens.",
+    "The night holds serenity in its quiet folds.",
+    "Stillness at midnight is the balm for a restless mind.",
+    "Midnight is the perfect time to listen to your soul’s whispers.",
+    "Reflections in the dark reveal the light within.",
+    "When the lights dim, inner truths reignite.",
+    "In solitude and silence, the mind finds freedom.",
+    "Let the midnight sky be your canvas for introspection.",
+    "After midnight, reflections become clearer in the night’s mirror.",
+    "Your heart’s deepest desires echo in the silence of night.",
+    "In the darkness, your inner light shines brightest.",
+    "Midnight unveils the facets of your hidden self.",
+    "True reflection begins when the nightfalls silence the noise.",
+    "When everything is still, truth becomes the horizon.",
+    "In the heart of the night, the soul finds its reflection.",
   ],
 };
 
@@ -833,7 +1176,9 @@ function setThemeBasedOnTime() {
 
 function getTimeBasedQuotes() {
   const hour = new Date().getHours();
-  if (hour < 12) {
+  if (hour >= 0 && hour < 4) {
+    return quotesByTime.night;
+  } else if (hour < 12) {
     return quotesByTime.morning;
   } else if (hour < 20) {
     return quotesByTime.midday;
@@ -891,7 +1236,9 @@ function updateGreeting() {
   // Only update if it's a new hour or first load
   if (!lastGreetingUpdate || currentHour.toString() !== lastGreetingHour) {
     let timeOfDay;
-    if (hour < 12) {
+    if (hour >= 0 && hour < 4) {
+      timeOfDay = "night";
+    } else if (hour < 12) {
       timeOfDay = "morning";
     } else if (hour < 20) {
       timeOfDay = "afternoon";
@@ -993,6 +1340,8 @@ function getMotivationalMessage() {
     return "Fantastic progress! You're in the flow zone. Keep this momentum going! ⚡";
   } else if (completionRate >= 0.5) {
     return "Great work so far! You're building solid momentum. Stay focused! 💪";
+  } else if (hour >= 0 && hour < 4) {
+    return "Late night focus? Remember to rest when you need to. Your well-being comes first. 🌙";
   } else if (hour < 12) {
     return "Good morning! Ready to turn intentions into achievements? Let's begin! ☀️";
   } else if (hour < 17) {

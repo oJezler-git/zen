@@ -231,29 +231,35 @@
 
     <script>
       // Debug controls for time simulation
-      function addDebugControls() {
+      function Debug() {
+        // Prevent multiple panels
+        if (document.getElementById("debug-time-panel")) return;
+
         const debugDiv = document.createElement("div");
+        debugDiv.id = "debug-time-panel";
         debugDiv.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--bg-card);
-        padding: 15px;
-        border-radius: 10px;
-        border: 1px solid var(--border-color);
-        z-index: 1000;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--bg-card);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      z-index: 1000;
     `;
 
         debugDiv.innerHTML = `
-        <div style="margin-bottom: 10px; color: var(--text-primary);">Debug Time Control</div>
-        <select id="debug-time" style="padding: 5px; margin-right: 10px;">
-            <option value="6">6:00 AM (Morning)</option>
-            <option value="10">10:00 AM (Morning)</option>
-            <option value="14">2:00 PM (Midday)</option>
-            <option value="17">5:00 PM (Evening)</option>
-            <option value="21">9:00 PM (Night)</option>
-        </select>
-        <button id="apply-debug-time" style="padding: 5px 10px;">Apply Time</button>
+      <div style="margin-bottom: 10px; color: var(--text-primary);">Debug Time Control</div>
+      <select id="debug-time" style="padding: 5px; margin-right: 10px;">
+        <option value="0">0:00 AM (Night)</option>
+        <option value="3">3:00 AM (Night)</option>
+        <option value="6">6:00 AM (Morning)</option>
+        <option value="10">10:00 AM (Morning)</option>
+        <option value="14">2:00 PM (Midday)</option>
+        <option value="17">5:00 PM (Midday)</option>
+        <option value="21">9:00 PM (Night)</option>
+      </select>
+      <button id="apply-debug-time" style="padding: 5px 10px;">Apply Time</button>
     `;
 
         document.body.appendChild(debugDiv);
@@ -271,7 +277,6 @@
             debugDate = new Date();
             debugDate.setHours(selectedHour);
 
-            // Override the Date constructor
             window.Date = class extends originalDate {
               constructor() {
                 super();
@@ -280,21 +285,29 @@
             };
 
             // Update everything that depends on time
-            updateDateTime();
-            setThemeBasedOnTime();
-            setRandomQuote();
-            updateGreeting();
-            updateMotivationalMessage();
+            updateDateTime?.();
+            setThemeBasedOnTime?.();
+            setRandomQuote?.();
+            updateGreeting?.();
+            updateMotivationalMessage?.();
           });
       }
 
-      // Add debug controls in development
       if (
         window.location.hostname === "localhost" ||
         window.location.hostname === "127.0.0.1"
       ) {
-        document.addEventListener("DOMContentLoaded", addDebugControls);
+        document.addEventListener("DOMContentLoaded", Debug);
       }
+
+      window.enableDebugControls = () => {
+        if (document.readyState === "loading") {
+          document.addEventListener("DOMContentLoaded", Debug);
+        } else {
+          Debug();
+        }
+        console.log("✅ Debug time controls enabled.");
+      };
     </script>
     <script src="scripts/script.js"></script>
   </body>
