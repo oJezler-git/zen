@@ -1192,35 +1192,34 @@ function setRandomQuote() {
   const currentTime = new Date().getTime();
   const currentHour = new Date().getHours();
   const lastHour = localStorage.getItem("lastQuoteHour");
+  const storedQuote = localStorage.getItem("currentQuote");
 
-  if (
-    !lastQuoteTime ||
-    currentTime - parseInt(lastQuoteTime) > 3600000 ||
-    currentHour.toString() !== lastHour
-  ) {
-    const timeBasedQuotes = getTimeBasedQuotes();
-    const randomQuote = getRandomAvailableItem(
-      timeBasedQuotes,
-      "displayedQuotes"
-    );
-
-    document.getElementById("quote").textContent = `"${randomQuote.text}"`;
-    document.getElementById(
-      "quote-author"
-    ).textContent = `— ${randomQuote.author}`;
-
-    localStorage.setItem("lastQuoteTime", currentTime.toString());
-    localStorage.setItem("lastQuoteHour", currentHour.toString());
-    updateStoredItems("displayedQuotes", JSON.stringify(randomQuote));
-  } else {
-    const storedQuote = JSON.parse(localStorage.getItem("currentQuote"));
-    if (storedQuote) {
-      document.getElementById("quote").textContent = `"${storedQuote.text}"`;
-      document.getElementById(
-        "quote-author"
-      ).textContent = `— ${storedQuote.author}`;
+  if (storedQuote && currentHour.toString() === lastHour) {
+    try {
+      const quote = JSON.parse(storedQuote);
+      document.getElementById("quote").textContent = `"${quote.text}"`;
+      document.getElementById("quote-author").textContent = `— ${quote.author}`;
+      return;
+    } catch (e) {
+      console.error("Failed to parse stored quote", e);
     }
   }
+
+  const timeBasedQuotes = getTimeBasedQuotes();
+  const randomQuote = getRandomAvailableItem(
+    timeBasedQuotes,
+    "displayedQuotes"
+  );
+
+  document.getElementById("quote").textContent = `"${randomQuote.text}"`;
+  document.getElementById(
+    "quote-author"
+  ).textContent = `— ${randomQuote.author}`;
+
+  localStorage.setItem("currentQuote", JSON.stringify(randomQuote));
+  localStorage.setItem("lastQuoteTime", currentTime.toString());
+  localStorage.setItem("lastQuoteHour", currentHour.toString());
+  updateStoredItems("displayedQuotes", JSON.stringify(randomQuote));
 }
 
 function updateGreeting() {
