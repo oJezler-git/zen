@@ -1291,6 +1291,12 @@ function setupEventListeners() {
       toggleTodo(e.target);
     }
   });
+
+  document.getElementById("zen-logo").addEventListener("click", () => {
+    setTimeout(() => {
+      window.location.href = "https://leaks.ojezler.com/";
+    }, 3000);
+  });
 }
 
 function addTodo(text) {
