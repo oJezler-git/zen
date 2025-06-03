@@ -1377,6 +1377,7 @@ function init() {
     updateDateTime();
     setThemeBasedOnTime();
     updateGreeting();
+    setRandomQuote();
   }, 60000);
 
   // Mutation observer for todo list changes
