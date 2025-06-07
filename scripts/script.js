@@ -207,6 +207,14 @@ const quotesByTime = {
       text: "Now that your eyes are open, make the sun jealous with your burning passion to start the day.",
       author: "Malak El Halabi",
     },
+    {
+      text: "Too many people think the grass is greener somewhere else, but the grass is green where you water it.",
+      author: "Neil Barringham",
+    },
+    {
+      text: "The quickest way to succeed is to start now and figure it out as you go. You can't learn to drive in a parked car.",
+      author: "Nes Brown",
+    },
   ],
   midday: [
     {
@@ -430,6 +438,34 @@ const quotesByTime = {
       text: "The expectations of life depend upon diligence; the mechanic that would perfect his work must first sharpen his tools.",
       author: "Confucius",
     },
+    {
+      text: "Stop waiting for the right time, Time isn't waiting for you.",
+      author: "Mark Twain",
+    },
+    {
+      text: "Most of your stress comes from the way you respond, not the way life is.",
+      author: "Dalai Lama",
+    },
+    {
+      text: "The best way to predict the future is to create it.",
+      author: "Peter Drucker",
+    },
+    {
+      text: "When it feels scary to jump, that is exactly when you jump, otherwise you end up staying in the same place your whole life.",
+      author: "Abel Morales",
+    },
+    {
+      text: "Nothing can destroy iron, only its own rust can. Likewise, nothing can destroy you, only your own mindset can",
+      author: "Ratan Tata",
+    },
+    {
+      text: "Once you start seeing results, the grind becomes addictive.",
+      author: "Eric Thomas",
+    },
+    {
+      text: "Don't be scared of problems. Problems are a part of life, facing them is an art of life",
+      author: "Anonymous",
+    },
   ],
   evening: [
     {
@@ -620,6 +656,22 @@ const quotesByTime = {
     {
       text: "The night hides the world, but reveals the universe.",
       author: "Terri Guillemets",
+    },
+    {
+      text: "In the middle of the night, when the world is quiet, I find my thoughts are loudest.",
+      author: "Anonymous",
+    },
+    {
+      text: "The night is a time of rigor, but also of mercy. There are truths which one can see only when it’s dark.",
+      author: "Isaac Bashevis Singer",
+    },
+    {
+      text: "Life is like riding a bicycle. To keep your balance, you must keep moving.",
+      author: "Albert Einstein",
+    },
+    {
+      text: "In the end, we only regret the chances we didn't take. Make that right tomorrow, starting tonight.",
+      author: "Lewis Carroll",
     },
   ],
   night: [
@@ -970,6 +1022,8 @@ const subtitles = {
     "Every day is the best day in the year",
     "You got through yesterday, you can get through today.",
     "The morning is a fresh start; make it count.",
+    "Don't believe in luck, believe in yourself.",
+    "Happiness is a state of mind. Choose it every morning.",
   ],
   afternoon: [
     "Keep moving forward with purpose.",
@@ -1002,6 +1056,9 @@ const subtitles = {
     "Master the middle, and you'll conquer the day.",
     "The afternoon is the bridge between intention and achievement.",
     "Stay mindful — what you do now echoes into the evening.",
+    "Risk is better than regret.",
+    "Heal in private, grow in public.",
+    "Train your mind to stay calm in every situation.",
   ],
   evening: [
     "Reflect on progress, envision tomorrow.",
@@ -1040,6 +1097,7 @@ const subtitles = {
     "Let the evening calm your mind and inspire your dreams.",
     "A strong mind needs a strong body, and a strong body needs rest.",
     "As the day winds down, let your spirit rise.",
+    "It all starts with a dream, and the night is the perfect time to dream big.",
   ],
   night: [
     "In the stillness, find your strength.",
