@@ -215,6 +215,10 @@ const quotesByTime = {
       text: "The quickest way to succeed is to start now and figure it out as you go. You can't learn to drive in a parked car.",
       author: "Nes Brown",
     },
+    {
+      text: "You will never be ready. Just start.",
+      author: "Mel Robbins",
+    },
   ],
   midday: [
     {
@@ -673,6 +677,10 @@ const quotesByTime = {
       text: "In the end, we only regret the chances we didn't take. Make that right tomorrow, starting tonight.",
       author: "Lewis Carroll",
     },
+    {
+      text: "When you get tired, learn to rest, not to quit.",
+      author: "Banksy",
+    },
   ],
   night: [
     {
@@ -890,6 +898,10 @@ const quotesByTime = {
     {
       text: "The darkness doesn't mean you're lost. It just means you're on your way.",
       author: "Morgan Harper Nichols",
+    },
+    {
+      text: "Moon is alone too, but it still shines.",
+      author: "Anonymous",
     },
   ],
 };
@@ -1169,8 +1181,8 @@ function updateStoredItems(key, item) {
   // Initialize or increment cycle count for this item
   stored.cycleCount[item] = (stored.cycleCount[item] || 0) + 1;
 
-  // Keep only the last 10 items to prevent storage bloat
-  if (stored.recent.length > 10) {
+  // Keep only the last 30 items to prevent storage bloat
+  if (stored.recent.length > 30) {
     const removed = stored.recent.shift();
     // Decrement cycle count when item falls off recent list
     if (stored.cycleCount[removed] > 0) {
@@ -1183,8 +1195,8 @@ function updateStoredItems(key, item) {
 
 function isItemAvailable(key, item) {
   const stored = getStoredItems(key);
-  // Item is available if it hasn't been shown in the last 10 cycles
-  return !stored.recent.includes(item) || stored.cycleCount[item] < 10;
+  // Item is available if it hasn't been shown in the last 30 cycles
+  return !stored.recent.includes(item) || stored.cycleCount[item] < 30;
 }
 
 function getRandomAvailableItem(items, storageKey) {
