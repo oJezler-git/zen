@@ -230,11 +230,60 @@
     </div>
 
     <script>
-      // Debug controls for time simulation
+      // Enhanced debug controls with quote rotation testing
       function Debug() {
         // Prevent multiple panels
         if (document.getElementById("debug-time-panel")) return;
 
+        // Initialize debugDate first
+        let debugDate = new Date();
+        const originalDate = Date;
+
+        // Define helper functions that use debugDate
+        function getCurrentTimePeriod() {
+          const hour = debugDate.getHours();
+          if (hour >= 0 && hour < 4) return "Night";
+          if (hour < 12) return "Morning";
+          if (hour < 20) return "Midday";
+          return "Evening";
+        }
+
+        function updateDebugInfo() {
+          const currentQuote = localStorage.getItem("currentQuote");
+          document.getElementById("debug-period").textContent =
+            getCurrentTimePeriod();
+          document.getElementById(
+            "debug-hour"
+          ).textContent = `${debugDate.getHours()}:00`;
+          document.getElementById("debug-quote").textContent = currentQuote
+            ? JSON.parse(currentQuote).text.substring(0, 30) +
+              (JSON.parse(currentQuote).text.length > 30 ? "..." : "")
+            : "None";
+        }
+
+        function applyDebugTime(hour) {
+          debugDate = new Date();
+          debugDate.setHours(hour, 0, 0, 0);
+
+          window.Date = class extends originalDate {
+            constructor() {
+              super();
+              return debugDate;
+            }
+          };
+
+          // Update all time-dependent components
+          updateDateTime?.();
+          setThemeBasedOnTime?.();
+          setRandomQuote?.();
+          updateGreeting?.();
+          updateMotivationalMessage?.();
+          updateDebugInfo();
+
+          console.log(`Time set to: ${hour}:00 (${getCurrentTimePeriod()})`);
+        }
+
+        // Now create the panel HTML
         const debugDiv = document.createElement("div");
         debugDiv.id = "debug-time-panel";
         debugDiv.style.cssText = `
@@ -246,51 +295,149 @@
       border-radius: 10px;
       border: 1px solid var(--border-color);
       z-index: 1000;
+      max-width: 300px;
+      font-family: monospace;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
     `;
 
         debugDiv.innerHTML = `
-      <div style="margin-bottom: 10px; color: var(--text-primary);">Debug Time Control</div>
-      <select id="debug-time" style="padding: 5px; margin-right: 10px;">
-        <option value="0">0:00 AM (Night)</option>
-        <option value="3">3:00 AM (Night)</option>
-        <option value="6">6:00 AM (Morning)</option>
-        <option value="10">10:00 AM (Morning)</option>
-        <option value="14">2:00 PM (Midday)</option>
-        <option value="17">5:00 PM (Midday)</option>
-        <option value="21">9:00 PM (Night)</option>
-      </select>
-      <button id="apply-debug-time" style="padding: 5px 10px;">Apply Time</button>
+      <div style="margin-bottom: 10px; font-weight: bold; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 8px;">
+        🛠️ Debug Controls
+      </div>
+      
+      <div style="margin-bottom: 12px;">
+        <div style="margin-bottom: 6px; font-size: 14px; color: var(--text-primary);">Simulate Time:</div>
+        <select id="debug-time" style="width: 100%; padding: 6px; margin-bottom: 8px; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+          <option value="0">🌙 0:00 AM (Night)</option>
+          <option value="3">🌌 3:00 AM (Night)</option>
+          <option value="6">🌅 6:00 AM (Morning)</option>
+          <option value="10">☀️ 10:00 AM (Morning)</option>
+          <option value="14">🏙️ 2:00 PM (Midday)</option>
+          <option value="17">🌇 5:00 PM (Midday)</option>
+          <option value="21">🌃 9:00 PM (Evening)</option>
+        </select>
+        <div style="display: flex; gap: 8px;">
+          <button id="apply-debug-time" style="padding: 6px 10px; flex: 1; background: var(--accent-color); color: white; border: none; border-radius: 4px;">
+            Apply Time
+          </button>
+          <button id="cycle-time-periods" style="padding: 6px 10px; flex: 1; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+            Cycle Period
+          </button>
+        </div>
+      </div>
+      
+      <div style="margin-bottom: 12px;">
+        <div style="margin-bottom: 6px; font-size: 14px; color: var(--text-primary);">Quote Testing:</div>
+        <div style="display: flex; gap: 8px; margin-bottom: 8px;">
+          <button id="test-quote-rotation" style="padding: 6px 10px; flex: 1; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+            Next Quote
+          </button>
+          <button id="reset-quote-storage" style="padding: 6px 10px; flex: 1; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+            Reset History
+          </button>
+        </div>
+        <button id="view-storage" style="padding: 6px 10px; width: 100%; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+          View Storage
+        </button>
+      </div>
+      
+      <div style="margin-bottom: 12px; padding: 10px; background: var(--bg-primary); border-radius: 4px; border: 1px solid var(--border-color);">
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.5;">
+          <div><strong>Current Period:</strong> <span id="debug-period">${getCurrentTimePeriod()}</span></div>
+          <div><strong>Current Hour:</strong> <span id="debug-hour">${debugDate.getHours()}:00</span></div>
+          <div><strong>Last Quote:</strong> <span id="debug-quote" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;">${
+            localStorage.getItem("currentQuote")
+              ? JSON.parse(localStorage.getItem("currentQuote")).text.substring(
+                  0,
+                  20
+                ) + "..."
+              : "None"
+          }</span></div>
+        </div>
+      </div>
+      
+      <div>
+        <button id="close-debug" style="padding: 6px 10px; width: 100%; background: var(--bg-primary); color: var(--text-primary); border: 1px solid var(--border-color); border-radius: 4px;">
+          Close Panel
+        </button>
+      </div>
     `;
 
         document.body.appendChild(debugDiv);
 
-        // Override Date functionality for testing
-        let debugDate = new Date();
-        const originalDate = Date;
-
+        // Set up event listeners
         document
           .getElementById("apply-debug-time")
           .addEventListener("click", () => {
             const selectedHour = parseInt(
               document.getElementById("debug-time").value
             );
-            debugDate = new Date();
-            debugDate.setHours(selectedHour);
-
-            window.Date = class extends originalDate {
-              constructor() {
-                super();
-                return debugDate;
-              }
-            };
-
-            // Update everything that depends on time
-            updateDateTime?.();
-            setThemeBasedOnTime?.();
-            setRandomQuote?.();
-            updateGreeting?.();
-            updateMotivationalMessage?.();
+            applyDebugTime(selectedHour);
           });
+
+        document
+          .getElementById("cycle-time-periods")
+          .addEventListener("click", () => {
+            const currentHour = debugDate.getHours();
+            let nextHour;
+            if (currentHour < 6) nextHour = 6; // night → morning
+            else if (currentHour < 12) nextHour = 12; // morning → midday
+            else if (currentHour < 20) nextHour = 20; // midday → evening
+            else nextHour = 0; // evening → night
+
+            document.getElementById("debug-time").value = nextHour;
+            applyDebugTime(nextHour);
+          });
+
+        document
+          .getElementById("test-quote-rotation")
+          .addEventListener("click", () => {
+            setRandomQuote?.();
+            updateDebugInfo();
+            console.log("Displayed new quote");
+          });
+
+        document
+          .getElementById("view-storage")
+          .addEventListener("click", () => {
+            const storage =
+              JSON.parse(localStorage.getItem("displayedQuotes")) || {};
+            console.group("Quote Storage");
+            console.log("Current time period:", getCurrentTimePeriod());
+            console.log("All stored data:", storage);
+
+            for (const period of ["Morning", "Midday", "Evening", "Night"]) {
+              const periodData = storage[period.toLowerCase()] || {
+                recent: [],
+                cycleCount: {},
+              };
+              console.log(
+                `${period}: ${periodData.recent.length} recent quotes`
+              );
+            }
+
+            console.groupEnd();
+          });
+
+        document
+          .getElementById("reset-quote-storage")
+          .addEventListener("click", () => {
+            localStorage.removeItem("displayedQuotes");
+            localStorage.removeItem("currentQuote");
+            localStorage.removeItem("lastQuoteTime");
+            localStorage.removeItem("lastQuoteHour");
+            console.log("Quote history reset");
+            updateDebugInfo();
+            alert("Quote history has been reset");
+          });
+
+        document.getElementById("close-debug").addEventListener("click", () => {
+          debugDiv.remove();
+          window.Date = originalDate;
+          console.log("Debug panel closed - time simulation disabled");
+        });
+
+        updateDebugInfo();
       }
 
       if (
@@ -306,7 +453,7 @@
         } else {
           Debug();
         }
-        console.log("✅ Debug time controls enabled.");
+        console.log("✅ Debug controls enabled");
       };
     </script>
     <script src="scripts/script.js"></script>
