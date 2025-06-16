@@ -470,6 +470,182 @@ const quotesByTime = {
       text: "Don't be scared of problems. Problems are a part of life, facing them is an art of life",
       author: "Anonymous",
     },
+    {
+      text: "Discipline is the bridge between goals and accomplishment.",
+      author: "Jim Rohn",
+    },
+    {
+      text: "Push yourself, because no one else is going to do it for you.",
+      author: "Anonymous",
+    },
+    {
+      text: "Work hard in silence, let success make the noise.",
+      author: "Frank Ocean",
+    },
+    {
+      text: "Great things are done by a series of small things brought together.",
+      author: "Vincent Van Gogh",
+    },
+    {
+      text: "Success is not in what you have, but who you are.",
+      author: "Bo Bennett",
+    },
+    {
+      text: "Don't limit your challenges. Challenge your limits.",
+      author: "Jerry Dunn",
+    },
+    {
+      text: "Success is stumbling from failure to failure with no loss of enthusiasm.",
+      author: "Winston Churchill",
+    },
+    {
+      text: "The difference between who you are and who you want to be is what you do.",
+      author: "Anonymous",
+    },
+    {
+      text: "Doubt kills more dreams than failure ever will.",
+      author: "Suzy Kassem",
+    },
+    {
+      text: "Effort only fully releases its reward after a person refuses to quit.",
+      author: "Napoleon Hill",
+    },
+    {
+      text: "If you want something you’ve never had, you must be willing to do something you’ve never done.",
+      author: "Thomas Jefferson",
+    },
+    {
+      text: "Do not fear failure but rather fear not trying.",
+      author: "Roy T. Bennett",
+    },
+    {
+      text: "Success doesn't come from what you do occasionally, it comes from what you do consistently.",
+      author: "Marie Forleo",
+    },
+    {
+      text: "If it doesn’t challenge you, it won’t change you.",
+      author: "Fred DeVito",
+    },
+    {
+      text: "Even if you’re on the right track, you’ll get run over if you just sit there.",
+      author: "Will Rogers",
+    },
+    {
+      text: "An afternoon is a new opportunity to make your day even better.",
+      author: "Unknown", // generic but uplifting afternoon-themed quote from various sources :contentReference[oaicite:1]{index=1}
+    },
+    {
+      text: "The afternoon is not the end but the beginning of all possibilities.",
+      author: "Unknown", // sourced from midday‑inspiration lists :contentReference[oaicite:2]{index=2}
+    },
+    {
+      text: "Every afternoon is another chance to change your life.",
+      author: "Maya Angelou", // sourced :contentReference[oaicite:3]{index=3}
+    },
+    {
+      text: "The afternoon knows what the morning never suspected.",
+      author: "Robert Frost", // from top afternoon quotes :contentReference[oaicite:4]{index=4}
+    },
+    {
+      text: "In the warmth of the afternoon, every leaf and shadow tells a story.",
+      author: "Pablo Neruda", // noted in afternoon reflections :contentReference[oaicite:5]{index=5}
+    },
+    {
+      text: "Let the gentle pace of the afternoon remind you to take a breath and relax.",
+      author: "Eckhart Tolle", // mindfulness-themed :contentReference[oaicite:6]{index=6}
+    },
+    {
+      text: "Life is magic in the afternoon; every moment holds a possibility for joy.",
+      author: "Stephen King", // afternoon reflection :contentReference[oaicite:7]{index=7}
+    },
+    {
+      text: "Use the afternoon to recharge and take on the rest of the day with renewed energy.",
+      author: "Unknown", // sourced from good afternoon message lists :contentReference[oaicite:8]{index=8}
+    },
+    {
+      text: "The afternoon is a reminder that success is built one moment at a time.",
+      author: "Unknown", // :contentReference[oaicite:9]{index=9}
+    },
+    {
+      text: "Good afternoon! The best time to make today great is right now.",
+      author: "Unknown", // :contentReference[oaicite:10]{index=10}
+    },
+    {
+      text: "The afternoon brings with it a sense of calm and relaxation after a productive morning.",
+      author: "Unknown", // :contentReference[oaicite:11]{index=11}
+    },
+    {
+      text: "Shake off any stresses or troubles from earlier — the afternoon is a clean slate.",
+      author: "Unknown", // :contentReference[oaicite:12]{index=12}
+    },
+    {
+      text: "Let the afternoon sun remind you that light always follows darkness.",
+      author: "Unknown", // :contentReference[oaicite:13]{index=13}
+    },
+    {
+      text: "Now is the time to find comfort in small pleasures like a walk in the park or catching up with old friends.",
+      author: "Unknown", // :contentReference[oaicite:14]{index=14}
+    },
+    {
+      text: "Make the most of daylight hours by doing something energizing yet relaxing.",
+      author: "Unknown", // :contentReference[oaicite:15]{index=15}
+    },
+    {
+      text: "Harness the afternoon to accomplish your goals!",
+      author: "Charlie Hunter", // productivity motivational quote :contentReference[oaicite:16]{index=16}
+    },
+    {
+      text: "Every productive afternoon is a step closer to your dreams!",
+      author: "Isabella Moore", // :contentReference[oaicite:17]{index=17}
+    },
+    {
+      text: "Intentionality in the afternoon will lead to success!",
+      author: "Samantha Brooks", // :contentReference[oaicite:18]{index=18}
+    },
+    {
+      text: "Every action taken this afternoon brings you closer to your goals!",
+      author: "Andrew Collins", // :contentReference[oaicite:19]{index=19}
+    },
+    {
+      text: "Focus on your tasks and make this afternoon count!",
+      author: "Ryan Hayes", // :contentReference[oaicite:20]{index=20}
+    },
+    {
+      text: "The best way to predict the future is to create it.",
+      author: "Peter Drucker", // timeless motivational quote :contentReference[oaicite:21]{index=21}
+    },
+    {
+      text: "The only way to do great work is to love what you do.",
+      author: "Steve Jobs", // focus/motivation quote :contentReference[oaicite:22]{index=22}
+    },
+    {
+      text: "The difference between ordinary and extraordinary is that little extra.",
+      author: "Jimmy Johnson", // midday energy spark :contentReference[oaicite:23]{index=23}
+    },
+    {
+      text: "The future belongs to those who believe in the beauty of their dreams.",
+      author: "Eleanor Roosevelt", // aspirational afternoon thought :contentReference[oaicite:24]{index=24}
+    },
+    {
+      text: "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+      author: "Winston Churchill", // resilient midday drive :contentReference[oaicite:25]{index=25}
+    },
+    {
+      text: "Believe you can and you’re halfway there.",
+      author: "Theodore Roosevelt", // confidence boost :contentReference[oaicite:26]{index=26}
+    },
+    {
+      text: "Sometimes the most productive thing you can do is relax.",
+      author: "Mark Black", // midday break reminder :contentReference[oaicite:27]{index=27}
+    },
+    {
+      text: "You only fail if you stop trying.",
+      author: "Unknown", // perseverance theme :contentReference[oaicite:28]{index=28}
+    },
+    {
+      text: "Motivation is what gets you started. Habit is what keeps you going.",
+      author: "Jim Ryun", // productivity mindset :contentReference[oaicite:29]{index=29}
+    },
   ],
   evening: [
     {
