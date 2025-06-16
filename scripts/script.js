@@ -1169,45 +1169,67 @@ function toggleTheme() {
 // Storage management functions
 function getStoredItems(key) {
   const stored = localStorage.getItem(key);
-  return stored ? JSON.parse(stored) : { recent: [], cycleCount: {} };
+  return stored
+    ? JSON.parse(stored)
+    : {
+        morning: { recent: [], cycleCount: {} },
+        midday: { recent: [], cycleCount: {} },
+        evening: { recent: [], cycleCount: {} },
+        night: { recent: [], cycleCount: {} },
+      };
 }
 
-function updateStoredItems(key, item) {
+function updateStoredItems(key, item, timePeriod) {
   const stored = getStoredItems(key);
 
-  // Add new item to recent list
-  stored.recent.push(item);
+  // Initialize time period if it doesn't exist
+  if (!stored[timePeriod]) {
+    stored[timePeriod] = { recent: [], cycleCount: {} };
+  }
 
-  // Initialize or increment cycle count for this item
-  stored.cycleCount[item] = (stored.cycleCount[item] || 0) + 1;
+  // Add new item to recent list for this time period
+  stored[timePeriod].recent.push(item);
 
-  // Keep only the last 30 items to prevent storage bloat
-  if (stored.recent.length > 30) {
-    const removed = stored.recent.shift();
+  // Initialize or increment cycle count for this item in this time period
+  stored[timePeriod].cycleCount[item] =
+    (stored[timePeriod].cycleCount[item] || 0) + 1;
+
+  // Keep only the last 10 items per time period to prevent storage bloat
+  if (stored[timePeriod].recent.length > 10) {
+    const removed = stored[timePeriod].recent.shift();
     // Decrement cycle count when item falls off recent list
-    if (stored.cycleCount[removed] > 0) {
-      stored.cycleCount[removed]--;
+    if (stored[timePeriod].cycleCount[removed] > 0) {
+      stored[timePeriod].cycleCount[removed]--;
     }
   }
 
   localStorage.setItem(key, JSON.stringify(stored));
 }
 
-function isItemAvailable(key, item) {
+function isItemAvailable(key, item, timePeriod) {
   const stored = getStoredItems(key);
-  // Item is available if it hasn't been shown in the last 30 cycles
-  return !stored.recent.includes(item) || stored.cycleCount[item] < 30;
+
+  // If time period doesn't exist yet, item is available
+  if (!stored[timePeriod]) {
+    return true;
+  }
+
+  // Item is available if it hasn't been shown in this time period's recent list
+  return !stored[timePeriod].recent.includes(item);
 }
 
-function getRandomAvailableItem(items, storageKey) {
-  // Filter out recently used items
+function getRandomAvailableItem(items, storageKey, timePeriod) {
+  // Filter out items recently used in this time period
   const availableItems = items.filter((item) =>
-    isItemAvailable(storageKey, JSON.stringify(item))
+    isItemAvailable(storageKey, JSON.stringify(item), timePeriod)
   );
 
-  // If all items have been used recently, reset the recent list for this category
+  // If all items have been used recently in this time period,
+  // reset the recent list for this time period
   if (availableItems.length === 0) {
-    localStorage.removeItem(storageKey);
+    const stored = getStoredItems(storageKey);
+    stored[timePeriod] = { recent: [], cycleCount: {} };
+    localStorage.setItem(storageKey, JSON.stringify(stored));
     return items[Math.floor(Math.random() * items.length)];
   }
 
@@ -1276,9 +1298,12 @@ function setRandomQuote() {
   }
 
   const timeBasedQuotes = getTimeBasedQuotes();
+  const timePeriod = getCurrentTimePeriod(); // Helper function to get current time period
+
   const randomQuote = getRandomAvailableItem(
     timeBasedQuotes,
-    "displayedQuotes"
+    "displayedQuotes",
+    timePeriod
   );
 
   document.getElementById("quote").textContent = `"${randomQuote.text}"`;
@@ -1289,7 +1314,20 @@ function setRandomQuote() {
   localStorage.setItem("currentQuote", JSON.stringify(randomQuote));
   localStorage.setItem("lastQuoteTime", currentTime.toString());
   localStorage.setItem("lastQuoteHour", currentHour.toString());
-  updateStoredItems("displayedQuotes", JSON.stringify(randomQuote));
+  updateStoredItems("displayedQuotes", JSON.stringify(randomQuote), timePeriod);
+}
+
+function getCurrentTimePeriod() {
+  const hour = new Date().getHours();
+  if (hour >= 0 && hour < 4) {
+    return "night";
+  } else if (hour < 12) {
+    return "morning";
+  } else if (hour < 20) {
+    return "midday";
+  } else {
+    return "evening";
+  }
 }
 
 function updateGreeting() {
